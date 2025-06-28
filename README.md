@@ -53,7 +53,8 @@ The **Farmers Assistant App** is a Django-based web application designed to empo
 
 ## 🖼️ Screenshots
 
-You can view screenshots of the project inside the [Project_View](./project%20view/) folder.
+You can view screenshots of the project inside the[Project_View](./farmers_app/project_view/)
+.folder.
 
 ---
 
