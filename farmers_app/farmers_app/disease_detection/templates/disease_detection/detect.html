@@ -1,0 +1,59 @@
+<style>
+  body {
+    background: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFybWVyc3xlbnwwfHwwfHx8MA%3D%3D') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .card.bg-glass {
+    background-color: rgba(255, 255, 255, 0.3); /* Light transparent white */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    border-radius: 1rem;
+  }
+
+  .card-title {
+    font-weight: bold;
+  }
+</style>
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <h2 class="card-title text-center text-success mb-4">
+                🧠 Crop Disease Detection (AI)
+            </h2>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Upload Leaf Image:</label>
+                    <input type="file" name="leaf_image" accept="image/*" class="form-control" required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-warning px-4">
+                        <i class="fas fa-search"></i> Detect Disease
+                    </button>
+                </div>
+            </form>
+
+            {% if image_url %}
+            <div class="mt-5 text-center">
+                <h5 class="text-primary">Uploaded Image:</h5>
+                <img src="{{ image_url }}" class="img-thumbnail shadow-sm mt-2" style="max-width: 300px;">
+            </div>
+            {% endif %}
+
+            {% if prediction %}
+            <div class="alert alert-info mt-4 text-center fs-5 shadow-sm">
+                <strong>Prediction:</strong> {{ prediction }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

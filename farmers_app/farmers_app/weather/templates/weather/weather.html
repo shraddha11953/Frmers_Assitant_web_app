@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>🌦️ Weather Forecast</h2>
+    <form method="post" class="mb-3">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city name" value="{{ city }}">
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather_data %}
+        {% if weather_data.error %}
+            <div class="alert alert-danger">{{ weather_data.error }}</div>
+        {% else %}
+            <div class="card p-3">
+                <h4>Weather in {{ city|title }}</h4>
+                <p>🌡️ Temperature: {{ weather_data.main.temp }}°C</p>
+                <p>🌥️ Condition: {{ weather_data.weather.0.description }}</p>
+                {% if 'rain' in weather_data.weather.0.description %}
+                    <p style="color:red;"><strong>☔ Alert: Rain expected. Prepare your crops!</strong></p>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

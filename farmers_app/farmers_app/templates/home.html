@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>One Page - 5 Sections</title>
+  <style>
+    section {
+      height: 100vh;
+      padding: 40px;
+      border-bottom: 2px solid #ccc;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #eee;
+      padding: 10px;
+      z-index: 100;
+    }
+    nav button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Buttons -->
+  <!-- <nav>
+    <button onclick="location.href='weather/'">Weather</button>
+    <button onclick="location.href='recommendation/'">crop_recommendation</button>
+    <button onclick="location.href='market/'">market_prices</button>
+    <button onclick="location.href='disease/'">disease_detection</button>
+    <button onclick="location.href='shop/'">Marketplace</button>
+    <button onclick="location.href='accounts/'">accounts</button>
+
+  </nav> --> -->
+
+  <!-- Sections -->
+  <!-- <section id="section1"><h2>Section 1</h2><p>Content for section 1.</p></section>
+  <section id="section2"><h2>Section 2</h2><p>Content for section 2.</p></section>
+  <section id="section3"><h2>Section 3</h2><p>Content for section 3.</p></section>
+  <section id="section4"><h2>Section 4</h2><p>Content for section 4.</p></section>
+  <section id="section5"><h2>Section 5</h2><p>Content for section 5.</p></section>
+
+  
+
+</body>
+</html> -->
+<!-- In the <head> section --><!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FarmConnect</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    .bg-image {
+      background-image: url('https://images.pexels.com/photos/4207908/pexels-photo-4207908.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      position: relative;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    }
+    .overlay-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">FarmConnect</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="weather/">Weather</a></li>
+          <li class="nav-item"><a class="nav-link" href="recommendation/">Crop Recommendation</a></li>
+          <li class="nav-item"><a class="nav-link" href="market/">Market Prices</a></li>
+          <li class="nav-item"><a class="nav-link" href="disease/">Disease Detection</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop/">Marketplace</a></li>
+          <li class="nav-item"><a class="nav-link" href="accounts/">Accounts</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Background Image Section -->
+  <div class="bg-image">
+    <div class="overlay-content">
+      <h1 class="display-4">Welcome to FarmConnect</h1>
+      <p class="lead">Empowering Farmers with Technology</p>
+      <a href="#features" class="btn btn-success btn-lg mt-4">Explore Features</a>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <section id="features" class="py-5 bg-light text-dark">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <i class="bi bi-cloud-sun display-4 text-success"></i>
+          <h3 class="mt-3">Weather Updates</h3>
+          <p>Stay informed with real-time weather forecasts tailored for your region.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-seedling display-4 text-success"></i>
+          <h3 class="mt-3">Crop Recommendations</h3>
+          <p>Receive expert advice on the best crops to plant based on soil and climate conditions.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-graph-up display-4 text-success"></i>
+          <h3 class="mt-3">Market Prices</h3>
+          <p>Access up-to-date market prices to make informed selling decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+    
+  

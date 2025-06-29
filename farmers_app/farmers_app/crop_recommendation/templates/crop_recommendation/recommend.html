@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        background: url('https://images.pexels.com/photos/2886937/pexels-photo-2886937.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .glass-card {
+        backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        color: #fff;
+    }
+
+    label {
+        font-weight: 500;
+    }
+
+    .form-control,
+    .form-select {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .green-header {
+        background-color: rgba(40, 167, 69, 0.85); /* Bootstrap green with opacity */
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 30px;
+        color: #000; /* Black text */
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .green-header h2 {
+        font-weight: bold;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .green-header p {
+        font-size: 1.1rem;
+        margin: 0;
+        font-weight: 500;
+    }
+</style>
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="glass-card p-4">
+                <div class="green-header">
+                    <h2><i class="bi bi-tree-fill me-2"></i>Crop Recommendation</h2>
+                    <p>Get the best crop based on your soil, temperature & rainfall.</p>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="soil" class="form-label">🧱 Soil Type</label>
+                        <select name="soil" id="soil" class="form-select" required>
+                            <option value="" disabled selected>Select soil type</option>
+                            <option value="clay">Clay</option>
+                            <option value="loamy">Loamy</option>
+                            <option value="sandy">Sandy</option>
+                            <option value="black">Black</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="temperature" class="form-label">🌡️ Temperature (°C)</label>
+                        <input type="number" step="0.1" name="temperature" id="temperature" class="form-control" required placeholder="e.g. 27.5">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rainfall" class="form-label">☔ Rainfall (mm)</label>
+                        <input type="number" step="0.1" name="rainfall" id="rainfall" class="form-control" required placeholder="e.g. 150">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-search"></i> Recommend Crop
+                        </button>
+                    </div>
+                </form>
+
+                {% if recommended_crop %}
+                <div class="alert alert-light text-dark mt-4 text-center">
+                    <h4 class="mb-0">✅ Recommended Crop: <strong>{{ recommended_crop|title }}</strong></h4>
+                    <img src="https://source.unsplash.com/600x300/?{{ recommended_crop }}" alt="{{ recommended_crop }}" class="img-fluid mt-3 rounded shadow">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

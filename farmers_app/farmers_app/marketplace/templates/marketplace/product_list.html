@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- ✅ Styles -->
+<style>
+  body {
+    background: url('https://images.pexels.com/photos/1632781/pexels-photo-1632781.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .glass-card {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    width: 300px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .glass-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .glass-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .glass-card p {
+    font-size: 0.95rem;
+    margin: 0.2rem 0;
+  }
+
+  .add-product-link {
+    display: block;
+    margin: 2rem auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #28a745;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    width: max-content;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  .add-product-link:hover {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  h2 {
+    color: #fff;
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: bold;
+  }
+</style>
+
+<!-- ✅ Content -->
+<h2>🌾 All Products</h2>
+
+<div class="product-container">
+  {% for product in products %}
+    <div class="glass-card">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description|truncatechars:100 }}</p>
+      <p><strong>Price:</strong> ₹{{ product.price }}</p>
+      <p><strong>Seller:</strong> {{ product.seller.username }}</p>
+    </div>
+  {% empty %}
+    <p class="text-white text-center">No products available.</p>
+  {% endfor %}
+
+  <!-- ✅ 4 Sample Cards (Static) -->
+  <div class="glass-card">
+    <img src="https://images.pexels.com/photos/1327832/pexels-photo-1327832.jpeg" alt="Tomatoes">
+    <h3>Fresh Tomatoes</h3>
+    <p>Bright red and juicy farm-fresh tomatoes harvested this week.</p>
+    <p><strong>Price:</strong> ₹40/kg</p>
+    <p><strong>Seller:</strong> demo_farmer</p>
+  </div>
+
+  <div class="glass-card">
+    <img src="https://images.pexels.com/photos/839725/pexels-photo-839725.jpeg" alt="Brinjal">
+    <h3>Organic Brinjals</h3>
+    <p>High-quality, chemical-free brinjals directly from local farmers.</p>
+    <p><strong>Price:</strong> ₹30/kg</p>
+    <p><strong>Seller:</strong> demo_farmer</p>
+  </div>
+
+  <div class="glass-card">
+    <img src="https://images.pexels.com/photos/4051216/pexels-photo-4051216.jpeg" alt="Green Chillies">
+    <h3>Green Chillies</h3>
+    <p>Spicy and fresh green chillies packed with natural heat and flavor.</p>
+    <p><strong>Price:</strong> ₹25/kg</p>
+    <p><strong>Seller:</strong> demo_farmer</p>
+  </div>
+
+  <div class="glass-card">
+    <img src="https://images.pexels.com/photos/5945907/pexels-photo-5945907.jpeg" alt="Grains">
+    <h3>Mixed Grains Pack</h3>
+    <p>A healthy mix of wheat, rice, and millet. Cleaned & sun-dried.</p>
+    <p><strong>Price:</strong> ₹60/kg</p>
+    <p><strong>Seller:</strong> demo_farmer</p>
+  </div>
+</div>
+
+{% if user.is_authenticated and user.user_type == 'farmer' %}
+  <a href="{% url 'add_product' %}" class="add-product-link">➕ Add a New Product</a>
+{% endif %}
+
+{% endblock %}
