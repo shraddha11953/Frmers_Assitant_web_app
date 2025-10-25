@@ -53,7 +53,19 @@ The **Farmers Assistant App** is a Django-based web application designed to empo
 
 ## 🖼️ Screenshots
 **Home Page:**  
-![homepage](project_view/homepage.png)
+![homepage](project_view/homepage.jpg)
+
+**crop_recommendation:**  
+![crop_recommendation](project_view/crop_recommendation.jpg)
+
+**disease_detection:**  
+![disease_detection](project_view/disease_detection.jpg)
+
+**market_price:**  
+![market_price](project_view/market_price.jpg)
+
+**products:**  
+![products](project_view/products.jpg)
 
 
 You can view screenshots of the project inside the[Project_View](./farmers_app/project_view/)
